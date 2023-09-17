@@ -1,0 +1,40 @@
+{
+	"FileVersion": 3,
+	"Version": 1,
+	"VersionName": "1.0",
+	"FriendlyName": "AutoFootstep",
+	"Description": "Plugin that automatically sets up character footsteps without any code.",
+	"Category": "Other",
+	"CreatedBy": "Metaseven",
+	"CreatedByURL": "https://twitter.com/suramaru517",
+	"DocsURL": "https://github.com/suramaru517/AutoFootstep",
+	"MarketplaceURL": "com.epicgames.launcher://ue/marketplace/content/66cea07913a248bba0ada8dd73c809b9",
+	"SupportURL": "https://discord.com/users/598448985220579328",
+	"EngineVersion": "",
+	"CanContainContent": false,
+	"Installed": true,
+	"Modules": [
+		{
+			"Name": "AutoFootstep",
+			"Type": "Runtime",
+			"LoadingPhase": "PreDefault",
+			"PlatformAllowList": [
+				"Win64"
+			]
+		},
+		{
+			"Name": "AutoFootstepEditor",
+			"Type": "Editor",
+			"LoadingPhase": "PreDefault",
+			"PlatformAllowList": [
+				"Win64"
+			]
+		}
+	],
+	"Plugins": [
+		{
+			"Name": "Niagara",
+			"Enabled": true
+		}
+	]
+}
