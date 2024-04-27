@@ -10,7 +10,7 @@
 	"DocsURL": "https://github.com/suramaru517/AutoFootstep",
 	"MarketplaceURL": "com.epicgames.launcher://ue/marketplace/content/66cea07913a248bba0ada8dd73c809b9",
 	"SupportURL": "https://discord.gg/YGPzKM24XK",
-	"EngineVersion": "",
+	"EngineVersion": "5.4.0",
 	"CanContainContent": false,
 	"Installed": true,
 	"Modules": [
