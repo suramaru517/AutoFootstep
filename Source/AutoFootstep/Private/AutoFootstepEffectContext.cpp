@@ -1,4 +1,4 @@
-// Copyright 2023 Metaseven. All Rights Reserved.
+// Copyright 2023-2024 Metaseven. All Rights Reserved.
 
 #include "AutoFootstepEffectContext.h"
 #include "Engine/AssetManager.h"

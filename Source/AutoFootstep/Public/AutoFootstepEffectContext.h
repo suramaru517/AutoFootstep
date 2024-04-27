@@ -1,4 +1,4 @@
-// Copyright 2023 Metaseven. All Rights Reserved.
+// Copyright 2023-2024 Metaseven. All Rights Reserved.
 
 #pragma once
 
@@ -8,7 +8,7 @@
 #include "AutoFootstepEffectContext.generated.h"
 
 class USoundBase;
-enum EPhysicalSurface;
+enum EPhysicalSurface : int;
 
 USTRUCT(BlueprintType)
 struct FAutoFootstepNiagaraParams
