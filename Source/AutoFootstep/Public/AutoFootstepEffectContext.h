@@ -67,7 +67,7 @@ public:
 	UFUNCTION(BlueprintCallable, Category = "AutoFootstep", meta = (WorldContext = "WorldContextObject", AutoCreateRefTerm = "NiagaraParams, SoundParams", AdvancedDisplay = 4))
 	void PlayEffectBySurfaceType(
 		const UObject* WorldContextObject,
-		const TEnumAsByte<EPhysicalSurface> SurfaceType,
+		const EPhysicalSurface SurfaceType,
 		const FVector& Location,
 		const FRotator& Rotation,
 		const FAutoFootstepNiagaraParams& NiagaraParams = FAutoFootstepNiagaraParams(),
@@ -78,7 +78,6 @@ public:
 	void AddAllSurfaceTypeElements();
 #endif
 
-private:
-	UPROPERTY(EditAnywhere, Category = "AutoFootstep")
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "AutoFootstep")
 	TMap<TEnumAsByte<EPhysicalSurface>, FAutoFootstepEffect> EffectsBySurfaceType;
 };

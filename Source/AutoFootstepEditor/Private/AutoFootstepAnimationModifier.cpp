@@ -150,6 +150,12 @@ void UAutoFootstepAnimationModifier::OnApply_Implementation(UAnimSequence* Anima
 			if (bAddNotify)
 			{
 				UAnimNotify* AnimNotify = UAnimationBlueprintLibrary::AddAnimationNotifyEvent(AnimationSequence, NotifyTrackName, Time, NotifyClass);
+				
+				if (UAutoFootstepAnimNotify* AutoFootstepAnimNotify = Cast<UAutoFootstepAnimNotify>(AnimNotify))
+				{
+					AutoFootstepAnimNotify->SetParams(FootBoneName, NotifyParams);
+				}
+				
 				OnNotifyAdded(AnimNotify, FootBoneName);
 			}
 
@@ -229,14 +235,6 @@ void UAutoFootstepAnimationModifier::PostEditChangeProperty(struct FPropertyChan
 	else if (PropertyChangedEvent.GetMemberPropertyName() == GET_MEMBER_NAME_CHECKED(UAutoFootstepAnimationModifier, NotifyClass))
 	{
 		bShowNotifyParams = NotifyClass && NotifyClass->IsChildOf(UAutoFootstepAnimNotify::StaticClass());
-	}
-}
-
-void UAutoFootstepAnimationModifier::OnNotifyAdded_Implementation(UObject* AnimNotify, const FName& FootBoneName)
-{
-	if (UAutoFootstepAnimNotify* AutoFootstepAnimNotify = Cast<UAutoFootstepAnimNotify>(AnimNotify))
-	{
-		AutoFootstepAnimNotify->Init(FootBoneName, NotifyParams);
 	}
 }
 

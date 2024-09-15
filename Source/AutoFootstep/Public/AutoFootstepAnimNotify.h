@@ -24,6 +24,15 @@ struct FAutoFootstepTraceParams
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "AutoFootstep")
 	bool bTraceComplex = false;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "AutoFootstep")
+	bool bDrawDebugLine = false;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "AutoFootstep", meta = (EditCondition = "bDrawDebugLine"))
+	FColor DebugLineColor = FColor::Red;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "AutoFootstep", meta = (EditCondition = "bDrawDebugLine"))
+	float DebugLineLifeTime = 1.0f;
 };
 
 USTRUCT(BlueprintType)
@@ -77,16 +86,25 @@ public:
 
 	virtual FString GetNotifyName_Implementation() const override;
 
-	void Init(const FName& InFootBoneName, const FAutoFootstepNotifyParams& InNotifyParams);
-
 	virtual void Notify(USkeletalMeshComponent* MeshComp, UAnimSequenceBase* Animation, const FAnimNotifyEventReference& EventReference) override;
 
-private:
-	void OnTraceCompleted(const FTraceHandle& TraceHandle, FTraceDatum& TraceDatum, USkeletalMeshComponent* MeshComp);
+	virtual FLinearColor GetEditorColor() override;
+	virtual UWorld* GetWorld() const override;
 
-	UPROPERTY(EditAnywhere, Category = "AutoFootstep", meta = (AnimNotifyBoneName = true))
+	void SetParams(const FName& InFootBoneName, const FAutoFootstepNotifyParams& InNotifyParams);
+
+protected:
+	UFUNCTION(BlueprintImplementableEvent, Category = "AutoFootstep")
+	void OnTraceHit(USkeletalMeshComponent* MeshComp, const FHitResult& HitResult) const;
+
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "AutoFootstep", meta = (AnimNotifyBoneName = true))
 	FName FootBoneName = NAME_None;
 
-	UPROPERTY(EditAnywhere, Category = "AutoFootstep")
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "AutoFootstep")
 	FAutoFootstepNotifyParams NotifyParams;
+
+private:
+	void OnTraceCompleted(const FTraceHandle& TraceHandle, FTraceDatum& TraceDatum);
+
+	TWeakObjectPtr<USkeletalMeshComponent> MeshContext;
 };

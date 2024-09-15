@@ -6,7 +6,7 @@
 #include "NiagaraFunctionLibrary.h"
 #include "Sound/SoundBase.h"
 
-void UAutoFootstepEffectContext::PlayEffectBySurfaceType(const UObject* WorldContextObject, const TEnumAsByte<EPhysicalSurface> SurfaceType, const FVector& Location, const FRotator& Rotation, const FAutoFootstepNiagaraParams& NiagaraParams, const FAutoFootstepSoundParams& SoundParams)
+void UAutoFootstepEffectContext::PlayEffectBySurfaceType(const UObject* WorldContextObject, const EPhysicalSurface SurfaceType, const FVector& Location, const FRotator& Rotation, const FAutoFootstepNiagaraParams& NiagaraParams, const FAutoFootstepSoundParams& SoundParams)
 {
 	if (const FAutoFootstepEffect* Effect = EffectsBySurfaceType.Find(SurfaceType))
 	{
@@ -40,19 +40,19 @@ void UAutoFootstepEffectContext::PlayEffectBySurfaceType(const UObject* WorldCon
 #if WITH_EDITOR
 void UAutoFootstepEffectContext::AddAllSurfaceTypeElements()
 {
-	for (int32 SurfaceType = 0; SurfaceType < SurfaceType_Max; ++SurfaceType)
+	for (int32 SurfaceType = SurfaceType_Default; SurfaceType < SurfaceType_Max; ++SurfaceType)
 	{
 		if (StaticEnum<EPhysicalSurface>()->HasMetaData(TEXT("Hidden"), SurfaceType))
 		{
 			continue;
 		}
 
-		if (EffectsBySurfaceType.Contains(TEnumAsByte<EPhysicalSurface>(SurfaceType)))
+		if (EffectsBySurfaceType.Contains(StaticCast<EPhysicalSurface>(SurfaceType)))
 		{
 			continue;
 		}
 
-		EffectsBySurfaceType.Add(TEnumAsByte<EPhysicalSurface>(SurfaceType));
+		EffectsBySurfaceType.Add(StaticCast<EPhysicalSurface>(SurfaceType));
 	}
 }
 #endif

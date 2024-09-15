@@ -1,9 +1,9 @@
 {
 	"FileVersion": 3,
 	"Version": 1,
-	"VersionName": "1.0",
+	"VersionName": "1.1",
 	"FriendlyName": "AutoFootstep",
-	"Description": "Plugin that automatically sets up character footsteps without any code.",
+	"Description": "Automatically set up character footsteps without any code.",
 	"Category": "Other",
 	"CreatedBy": "Metaseven",
 	"CreatedByURL": "https://twitter.com/suramaru517",

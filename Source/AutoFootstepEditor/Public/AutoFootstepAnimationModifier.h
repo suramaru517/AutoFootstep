@@ -8,7 +8,7 @@
 #include "AutoFootstepAnimationModifier.generated.h"
 
 UCLASS()
-class UAutoFootstepAnimationModifier : public UAnimationModifier
+class AUTOFOOTSTEPEDITOR_API UAutoFootstepAnimationModifier : public UAnimationModifier
 {
 	GENERATED_BODY()
 
@@ -19,9 +19,8 @@ public:
 	virtual void PostEditChangeProperty(struct FPropertyChangedEvent& PropertyChangedEvent) override;
 
 protected:
-	UFUNCTION(BlueprintNativeEvent, Category = "AutoFootstep")
+	UFUNCTION(BlueprintImplementableEvent, Category = "AutoFootstep")
 	void OnNotifyAdded(UObject* AnimNotify, const FName& FootBoneName);
-	virtual void OnNotifyAdded_Implementation(UObject* AnimNotify, const FName& FootBoneName);
 
 private:
 	bool ContainsPathFilter(const UAnimSequence* AnimationSequence);
