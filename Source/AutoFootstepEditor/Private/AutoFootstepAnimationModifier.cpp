@@ -210,11 +210,16 @@ void UAutoFootstepAnimationModifier::OnRevert_Implementation(UAnimSequence* Anim
 	}
 }
 
-void UAutoFootstepAnimationModifier::PostEditChangeProperty(struct FPropertyChangedEvent& PropertyChangedEvent)
+void UAutoFootstepAnimationModifier::PostEditChangeProperty(FPropertyChangedEvent& PropertyChangedEvent)
 {
 	Super::PostEditChangeProperty(PropertyChangedEvent);
 
-	if (PropertyChangedEvent.GetMemberPropertyName() == GET_MEMBER_NAME_CHECKED(UAutoFootstepAnimationModifier, FootBoneNames))
+	if (!PropertyChangedEvent.MemberProperty)
+	{
+		return;
+	}
+
+	if (PropertyChangedEvent.MemberProperty->GetFName() == GET_MEMBER_NAME_CHECKED(UAutoFootstepAnimationModifier, FootBoneNames))
 	{
 		TMap<FName, FName> NewMarkerNames;
 
@@ -232,7 +237,7 @@ void UAutoFootstepAnimationModifier::PostEditChangeProperty(struct FPropertyChan
 
 		MarkerNamesByFootBone = NewMarkerNames;
 	}
-	else if (PropertyChangedEvent.GetMemberPropertyName() == GET_MEMBER_NAME_CHECKED(UAutoFootstepAnimationModifier, NotifyClass))
+	else if (PropertyChangedEvent.MemberProperty->GetFName() == GET_MEMBER_NAME_CHECKED(UAutoFootstepAnimationModifier, NotifyClass))
 	{
 		bShowNotifyParams = NotifyClass && NotifyClass->IsChildOf(UAutoFootstepAnimNotify::StaticClass());
 	}
