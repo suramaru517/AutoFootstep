@@ -5,8 +5,16 @@
 #include "CoreMinimal.h"
 #include "Animation/AnimNotifies/AnimNotify.h"
 #include "AutoFootstepEffectContext.h"
-#include "Components/SkeletalMeshComponent.h"
+#include "Engine/EngineTypes.h"
 #include "AutoFootstepAnimNotify.generated.h"
+
+class UAnimSequenceBase;
+class USkeletalMeshComponent;
+class UWorld;
+struct FAnimNotifyEventReference;
+struct FHitResult;
+struct FTraceDatum;
+struct FTraceHandle;
 
 USTRUCT(BlueprintType)
 struct FAutoFootstepTraceParams

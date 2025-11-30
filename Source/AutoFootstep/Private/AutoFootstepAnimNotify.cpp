@@ -1,12 +1,20 @@
 // Copyright 2023-2024 Metaseven. All Rights Reserved.
 
 #include "AutoFootstepAnimNotify.h"
+
+#include "Animation/AnimNotifies/AnimNotify.h"
+#include "AutoFootstepEffectContext.h"
+#include "Components/SkeletalMeshComponent.h"
 #include "DrawDebugHelpers.h"
+#include "Engine/EngineTypes.h"
+#include "Engine/HitResult.h"
 #include "Engine/World.h"
 #include "Perception/AISense_Hearing.h"
 #include "PhysicalMaterials/PhysicalMaterial.h"
+#include "WorldCollision.h"
 
 UAutoFootstepAnimNotify::UAutoFootstepAnimNotify()
+	: Super()
 {
 #if WITH_EDITORONLY_DATA
 	NotifyColor = FColor(194, 199, 177, 255);

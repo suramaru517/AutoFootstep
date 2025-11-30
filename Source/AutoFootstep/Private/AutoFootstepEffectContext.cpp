@@ -1,9 +1,11 @@
 // Copyright 2023-2024 Metaseven. All Rights Reserved.
 
 #include "AutoFootstepEffectContext.h"
+
 #include "Engine/AssetManager.h"
 #include "Kismet/GameplayStatics.h"
 #include "NiagaraFunctionLibrary.h"
+#include "NiagaraSystem.h"
 #include "Sound/SoundBase.h"
 
 void UAutoFootstepEffectContext::PlayEffectBySurfaceType(const UObject* WorldContextObject, const EPhysicalSurface SurfaceType, const FVector& Location, const FRotator& Rotation, const FAutoFootstepNiagaraParams& NiagaraParams, const FAutoFootstepSoundParams& SoundParams)

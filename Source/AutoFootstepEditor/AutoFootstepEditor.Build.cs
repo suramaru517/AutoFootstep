@@ -6,24 +6,20 @@ public class AutoFootstepEditor : ModuleRules
 {
 	public AutoFootstepEditor(ReadOnlyTargetRules Target) : base(Target)
 	{
-		PCHUsage = ModuleRules.PCHUsageMode.UseExplicitOrSharedPCHs;
+		PCHUsage = PCHUsageMode.UseExplicitOrSharedPCHs;
 
-		PublicDependencyModuleNames.AddRange(
-			new string[]
-			{
-				"Core",
-			}
-		);
+		PublicDependencyModuleNames.AddRange(new[]
+		{
+			"Core",
+		});
 
-		PrivateDependencyModuleNames.AddRange(
-			new string[]
-			{
-				"CoreUObject",
-				"Engine",
-				"AnimationBlueprintLibrary",
-				"AnimationModifiers",
-				"AutoFootstep",
-			}
-		);
+		PrivateDependencyModuleNames.AddRange(new[]
+		{
+			"CoreUObject",
+			"Engine",
+			"AnimationBlueprintLibrary",
+			"AnimationModifiers",
+			"AutoFootstep",
+		});
 	}
 }

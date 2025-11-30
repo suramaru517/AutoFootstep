@@ -7,6 +7,7 @@
 #include "NiagaraCommon.h"
 #include "AutoFootstepEffectContext.generated.h"
 
+class UNiagaraSystem;
 class USoundBase;
 enum EPhysicalSurface : int;
 
@@ -71,7 +72,8 @@ public:
 		const FVector& Location,
 		const FRotator& Rotation,
 		const FAutoFootstepNiagaraParams& NiagaraParams = FAutoFootstepNiagaraParams(),
-		const FAutoFootstepSoundParams& SoundParams = FAutoFootstepSoundParams());
+		const FAutoFootstepSoundParams& SoundParams = FAutoFootstepSoundParams()
+	);
 
 #if WITH_EDITOR
 	UFUNCTION(CallInEditor, Category = "AutoFootstep")

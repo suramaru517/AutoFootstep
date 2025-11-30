@@ -6,24 +6,20 @@ public class AutoFootstep : ModuleRules
 {
 	public AutoFootstep(ReadOnlyTargetRules Target) : base(Target)
 	{
-		PCHUsage = ModuleRules.PCHUsageMode.UseExplicitOrSharedPCHs;
+		PCHUsage = PCHUsageMode.UseExplicitOrSharedPCHs;
 
-		PublicDependencyModuleNames.AddRange(
-			new string[]
-			{
-				"Core",
-				"Niagara",
-			}
-		);
+		PublicDependencyModuleNames.AddRange(new[]
+		{
+			"Core",
+			"Niagara",
+		});
 
-		PrivateDependencyModuleNames.AddRange(
-			new string[]
-			{
-				"CoreUObject",
-				"Engine",
-				"AIModule",
-				"PhysicsCore",
-			}
-		);
+		PrivateDependencyModuleNames.AddRange(new[]
+		{
+			"CoreUObject",
+			"Engine",
+			"AIModule",
+			"PhysicsCore",
+		});
 	}
 }

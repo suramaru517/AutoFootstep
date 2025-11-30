@@ -7,16 +7,21 @@
 #include "AutoFootstepAnimNotify.h"
 #include "AutoFootstepAnimationModifier.generated.h"
 
+class UAnimNotify;
+class UAnimSequence;
+
 UCLASS()
 class AUTOFOOTSTEPEDITOR_API UAutoFootstepAnimationModifier : public UAnimationModifier
 {
 	GENERATED_BODY()
 
 public:
+	UAutoFootstepAnimationModifier();
+
 	virtual void OnApply_Implementation(UAnimSequence* AnimationSequence) override;
 	virtual void OnRevert_Implementation(UAnimSequence* AnimationSequence) override;
 
-	virtual void PostEditChangeProperty(struct FPropertyChangedEvent& PropertyChangedEvent) override;
+	virtual void PostEditChangeProperty(FPropertyChangedEvent& PropertyChangedEvent) override;
 
 protected:
 	UFUNCTION(BlueprintImplementableEvent, Category = "AutoFootstep")
@@ -41,7 +46,7 @@ private:
 	bool bAddNotify = true;
 
 	UPROPERTY(EditAnywhere, Category = "AutoFootstep|Notify", meta = (EditCondition = "bAddNotify"))
-	TSubclassOf<UAnimNotify> NotifyClass = UAutoFootstepAnimNotify::StaticClass();
+	TSubclassOf<UAnimNotify> NotifyClass;
 
 	UPROPERTY()
 	bool bShowNotifyParams = true;

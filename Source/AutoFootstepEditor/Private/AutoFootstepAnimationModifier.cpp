@@ -1,8 +1,18 @@
 // Copyright 2023-2024 Metaseven. All Rights Reserved.
 
 #include "AutoFootstepAnimationModifier.h"
+
 #include "Animation/AnimSequence.h"
+#include "AnimationBlueprintLibrary.h"
 #include "AnimPose.h"
+#include "AutoFootstepAnimNotify.h"
+#include "Animation/AnimNotifies/AnimNotify.h"
+
+UAutoFootstepAnimationModifier::UAutoFootstepAnimationModifier()
+	: Super()
+{
+	NotifyClass = UAutoFootstepAnimNotify::StaticClass();
+}
 
 void UAutoFootstepAnimationModifier::OnApply_Implementation(UAnimSequence* AnimationSequence)
 {
@@ -150,12 +160,12 @@ void UAutoFootstepAnimationModifier::OnApply_Implementation(UAnimSequence* Anima
 			if (bAddNotify)
 			{
 				UAnimNotify* AnimNotify = UAnimationBlueprintLibrary::AddAnimationNotifyEvent(AnimationSequence, NotifyTrackName, Time, NotifyClass);
-				
+
 				if (UAutoFootstepAnimNotify* AutoFootstepAnimNotify = Cast<UAutoFootstepAnimNotify>(AnimNotify))
 				{
 					AutoFootstepAnimNotify->SetParams(FootBoneName, NotifyParams);
 				}
-				
+
 				OnNotifyAdded(AnimNotify, FootBoneName);
 			}
 
