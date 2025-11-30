@@ -1,4 +1,4 @@
-// Copyright 2023-2024 Metaseven. All Rights Reserved.
+// Copyright Metaseven. All Rights Reserved.
 
 #include "AutoFootstepEditor.h"
 
